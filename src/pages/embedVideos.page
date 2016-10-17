@@ -1,0 +1,48 @@
+<apex:page sidebar="false" showHeader="false" controller="embedVideosController" >
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
+
+<apex:form >
+
+    <apex:pageBlock title="World On Screens"  >       
+        <div class="row">
+            <div class="col-md-4">
+                <apex:commandLink value="All" action="{!getVideos}" rerender="vidPanel">                    
+                    <apex:param value="All" assignTo="{!ctgryValue}"  /> 
+               </apex:commandLink> 
+               <br/>
+                <apex:commandLink value="Business" action="{!getVideos}" rerender="vidPanel">                    
+                    <apex:param value="Business" assignTo="{!ctgryValue}"  /> 
+               </apex:commandLink>                 
+                <br/>
+                <apex:commandLink value="Success Stories" action="{!getVideos}">
+                    <apex:param value="Success Stories" assignTo="{!ctgryValue}"/> 
+               </apex:commandLink>
+                <br/>
+                <apex:commandLink value="Cinema Trailers" action="{!getVideos}">
+                    <apex:param value="Cinema Trailers" assignTo="{!ctgryValue}"  /> 
+                </apex:commandLink>
+                <br/>
+
+            </div>
+            <div class="col-md-8">
+                <apex:outputpanel id="vidPanel">
+                    <apex:pageblocksection columns="1">              
+                        <apex:repeat value="{!info}" var="inf">            
+                            <apex:outputLabel value="{!inf.Title__c}"></apex:outputLabel>                         
+                            <iframe width="560" height="315" src="{!inf.URL__c}" frameborder="0" allowfullscreen="true"></iframe>                
+                        </apex:repeat>                 
+                    </apex:pageblocksection>
+                </apex:outputpanel>
+            </div>
+        </div>
+        
+        
+    </apex:pageBlock>
+    
+</apex:form>
+
+</apex:page>
+
+<!-- <apex:iframe width="420" height="315" src="<a target="_blank" href="http://www.youtube.com/embed/Qd8OtvSgal8" rel="nofollow">http://www.youtube.com/embed/Qd8OtvSgal8</a>"/> 
+<apex:iframe width="420" height="315" src="http://www.youtube.com/embed/Qd8OtvSgal8" frameborder="0"/> 
+<apex:repeat value="{!info}" var="inf">-->

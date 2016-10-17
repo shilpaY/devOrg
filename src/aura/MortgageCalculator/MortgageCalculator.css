@@ -1,0 +1,32 @@
+.THIS {
+    padding:16px;
+}
+
+.THIS input[type=text]{
+    font-size: 14px ;
+    width: 150px;
+    padding: 8px;
+    margin: 4px 0;
+    border: solid 1px #DDDDDD;
+    border-radius: 4px;
+}
+
+.THIS h2 {
+    font-size:20px;
+    margin-top:8px;
+}
+
+.THIS label {
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+    margin-right: 6px;
+}
+
+.THIS .principal-val-high{
+    background-color : red;
+}
+
+.THIS .principal-val{
+    background-color : #FFFFFF;
+}

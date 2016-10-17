@@ -1,0 +1,17 @@
+<aura:component implements="flexipage:availableForAllPageTypes" >
+    <aura:attribute name="amortization" type="Object[]"/>
+    <aura:handler event="c:MortgageChange" action="{!c.MortgageChange}"/>
+    
+    <table>
+    	<thead>
+        	<tr>
+            	<th>Year</th>
+            	<th class="principal">Principal</th>
+            	<th class="stretch"></th>
+                <th class="interest">Interest</th>
+                <th>Balance</th>
+            </tr>
+        
+        </thead>    
+    </table>
+</aura:component>

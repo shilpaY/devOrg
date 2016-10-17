@@ -1,0 +1,64 @@
+<apex:page controller="accConOppContr"  tabstyle="account" sidebar="false" showHeader="false" >
+    <apex:form id="assignmentForm">
+    
+        <apex:pageBlock id="details">  
+            
+        <apex:pageBlockButtons >
+            <apex:commandButton value="First" rerender="details" action="{!firstPage}" disabled="{!prev}"/>
+            <apex:commandButton value="Previous" rerender="details" action="{!previous}" disabled="{!prev}"/>
+            <apex:commandButton value="Next" rerender="details" action="{!next}" disabled="{!nxt}"/>
+            <apex:commandButton value="Last" rerender="details" action="{!lastPage}" disabled="{!nxt}"/>
+        </apex:pageBlockButtons>        
+        <apex:outputpanel id="accPanel">  
+         <apex:pageBlockTable value="{!acclist}" var="acc">                             
+             <apex:column >                                                 
+                <apex:inputcheckbox >                
+                <apex:actionSupport action="{!getContOpp}" event="onclick" rerender="accPanel,conPanel,oppPanel">
+                  <apex:param value="{!acc.id}" assignTo="{!accountId}" id="a1" name="a2" /> 
+                </apex:actionSupport>                  
+                </apex:inputcheckbox>                   
+            </apex:column>                 
+            <apex:column headerValue="Account Name">
+               <!-- <apex:outputLink value="/{!acc.Id}">{!acc.name}</apex:outputLink> -->
+               <apex:commandLink value="{!acc.name}" action="{!URLFOR($Action.account.view,acc.id)}"/>
+            </apex:column>                 
+        </apex:pageBlockTable>               
+        </apex:outputpanel> 
+              
+        </apex:pageBlock>
+        
+        <apex:outputPanel id="conPanel">
+        <apex:pageBlock id="conPageBlock" rendered="{!conts != null && !conts.empty}"> 
+        <apex:pageBlockButtons >
+            <apex:commandButton value="First" rerender="conPageBlock" action="{!firstPageCon}" disabled="{!prevCon}"/>
+            <apex:commandButton value="Previous" rerender="conPageBlock" action="{!previousCon}" disabled="{!prevCon}"/>
+            <apex:commandButton value="Next" rerender="conPageBlock" action="{!nextCon}" disabled="{!nxtCon}"/>
+            <apex:commandButton value="Last" rerender="conPageBlock" action="{!lastPageCon}" disabled="{!nxtCon}"/>
+        </apex:pageBlockButtons>        
+        <apex:pageBlockTable value="{!conts}" var="con" >          
+            <apex:column headerValue="Contact Name">
+                <apex:commandLink value="{!con.name}" action="{!URLFOR($Action.contact.view,con.id)}"/>
+            </apex:column>                           
+        </apex:pageBlockTable>      
+        </apex:pageBlock>
+        </apex:outputPanel>
+        
+        
+        <apex:outputPanel id="oppPanel">
+        <apex:pageBlock id="oppPageBlock" rendered="{!opps!=null && !opps.empty}">
+        <apex:pageBlockButtons >
+            <apex:commandButton value="First" rerender="oppPageBlock" action="{!firstPageOpp}" disabled="{!prevOpp}"/>
+            <apex:commandButton value="Previous" rerender="oppPageBlock" action="{!previousOpp}" disabled="{!prevOpp}"/>
+            <apex:commandButton value="Next" rerender="oppPageBlock" action="{!nextOpp}" disabled="{!nxtOpp}"/>
+            <apex:commandButton value="Last" rerender="oppPageBlock" action="{!lastPageOpp}" disabled="{!nxtOpp}"/>
+        </apex:pageBlockButtons>  
+        <apex:pageBlockTable value="{!opps}" var="opp" >             
+            <apex:column headerValue="Opportunity Name">
+                <apex:commandLink value="{!opp.name}" action="{!URLFOR($Action.opportunity.view,opp.id)}"/>
+            </apex:column>                        
+        </apex:pageBlockTable>              
+        </apex:pageBlock>
+        </apex:outputpanel> 
+        
+    </apex:form>
+</apex:page>

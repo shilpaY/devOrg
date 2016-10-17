@@ -1,0 +1,17 @@
+<aura:component >
+    <aura:attribute name="principal" type="double" default="200000"/>
+    <aura:attribute name="years" type="double" default="30"/>
+    <aura:attribute name="rate" type="double" default="3"/>
+    <aura:attribute name="monthlyPayment" type="double"/>
+    
+    <div>
+        <ui:inputNumber label="Principal" value="{!v.principal}" format="#" />
+        <ui:inputNumber label="Years: " value="{!v.years}" />
+        <ui:inputNumber label="Rate: " value="{!v.rate}" />
+        <button onclick="{!c.calculateMonthlyPayment}">Calculate Monthly Payment</button>
+    	<h2>Monthly Payment: <ui:outputCurrency value="{!v.monthlyPayment}" class="principal"></ui:outputCurrency></h2>
+    
+    
+    </div>
+    
+</aura:component>
